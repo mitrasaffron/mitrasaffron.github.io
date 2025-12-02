@@ -1,142 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mitra Saffron | Premium Iranian Saffron</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
+    <title>زعفران میترا | طلای سرخ ایران</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        /* --- VARIABLES & RESET --- */
-        :root {
-            --color-primary: #8a1c26; /* Deep Saffron Red */
-            --color-primary-dark: #5e1018;
-            --color-gold: #d4af37; /* Metallic Gold */
-            --color-gold-light: #f3e5ab;
-            --color-bg: #f9f7f2; /* Soft Cream */
-            --color-text: #2c2c2c;
-            --color-text-light: #666;
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.5);
-            --shadow-card: 0 10px 30px -10px rgba(138, 28, 38, 0.15);
-            --shadow-hover: 0 20px 40px -10px rgba(138, 28, 38, 0.25);
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #d4af37;
+            --primary-dark: #b8941f;
+            --secondary: #8b0000;
+            --light: #f9f5e7;
+            --dark: #333;
+            --gray: #777;
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            overflow-x: hidden;
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--color-primary-dark);
-        }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; }
-
-        /* --- UTILITIES --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .text-gold { color: var(--color-gold); }
-        .text-center { text-align: center; }
-        
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(138, 28, 38, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(138, 28, 38, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--color-gold);
-            color: var(--color-gold);
-        }
-
-        .btn-outline:hover {
-            background: var(--color-gold);
-            color: white;
-        }
-
-        /* --- ANIMATIONS --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- NAVBAR --- */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 1000;
-            padding: 1.5rem 0;
-            transition: var(--transition);
-        }
-
-        nav.scrolled {
-            background: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-
-        .nav-content {
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .logo i {
+            color: var(--primary);
         }
 
         .nav-links {
@@ -145,695 +70,683 @@
         }
 
         .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
             font-weight: 500;
-            font-size: 0.95rem;
-            color: var(--color-text);
-            transition: color 0.3s;
+            transition: var(--transition);
+            position: relative;
         }
 
-        .nav-links a:hover { color: var(--color-primary); }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
 
-        /* --- HERO SECTION --- */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
         .hero {
-            position: relative;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 110%; /* For parallax */
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1615485290382-441e4d04fcadc?q=80&w=2070&auto=format&fit=crop');
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
-            z-index: -1;
+            color: white;
+            padding: 0 1rem;
         }
 
         .hero-content {
-            text-align: center;
-            color: white;
             max-width: 800px;
-            padding: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.5s;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: white;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            color: rgba(255,255,255,0.9);
-            font-weight: 300;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
-        /* Floating Particles */
-        .particle {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background: var(--color-gold);
-            border-radius: 50%;
-            animation: float 10s infinite linear;
-            opacity: 0.6;
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
         }
 
-        @keyframes float {
-            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
         }
 
-        /* --- WHY SAFFRON (Features) --- */
-        .features {
-            padding: 6rem 0;
-        }
-
-        .section-header {
+        .section-title {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
+            position: relative;
         }
 
-        .section-header span {
-            color: var(--color-gold);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .section-header h2 {
+        .section-title h2 {
             font-size: 2.5rem;
+            color: var(--secondary);
+            display: inline-block;
         }
 
-        .feature-grid {
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+
+        .about-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-image {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease;
+        }
+
+        .about-image.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Products Section */
+        .products {
+            background-color: var(--light);
+        }
+
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .feature-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-card);
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.02);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            color: var(--color-primary);
-            margin-bottom: 1.5rem;
-            background: #fff0f2;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* --- WHY MITRA (Pillars) --- */
-        .pillars {
-            padding: 6rem 0;
-            background: linear-gradient(to bottom, var(--color-bg), #fff);
-            position: relative;
-        }
-
-        .pillar-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .pillar-image {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-card);
-            position: relative;
-        }
-
-        .pillar-image img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.8s;
-        }
-
-        .pillar-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .pillar-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .pillar-list {
-            margin-top: 2rem;
-        }
-
-        .pillar-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-
-        .check-icon {
-            color: var(--color-gold);
-            margin-right: 1rem;
-            font-size: 1.2rem;
-            margin-top: 3px;
-        }
-
-        /* --- PRODUCTS --- */
-        .products {
-            padding: 6rem 0;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-
         .product-card {
-            background: white;
-            border-radius: 20px;
+            background-color: white;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: var(--shadow-card);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .product-img {
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .product-details {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .product-details h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .price {
-            color: var(--color-primary);
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        /* --- QUALITY & LAB --- */
-        .quality {
-            padding: 6rem 0;
-            background: #1a1a1a;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .quality-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1579165466741-7f35a4755657?q=80&w=2000&auto=format&fit=crop') center/cover;
-            opacity: 0.15;
-            z-index: 0;
-        }
-
-        .quality-content {
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+        .product-image {
+            height: 200px;
+            background-color: var(--primary);
+            display: flex;
             align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
         }
 
-        .iso-badge {
-            display: inline-block;
-            border: 1px solid var(--color-gold);
-            padding: 0.5rem 1rem;
-            color: var(--color-gold);
-            border-radius: 4px;
-            font-size: 0.9rem;
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .product-content p {
+            color: var(--gray);
             margin-bottom: 1rem;
         }
 
-        .quality h2 { color: white; }
-        .quality p { color: rgba(255,255,255,0.8); }
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        .stat-grid {
+        .price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Quality Section */
+        .quality {
+            background-color: white;
+        }
+
+        .quality-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+        }
+
+        .quality-item {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-radius: 10px;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .quality-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quality-item:hover {
+            background-color: var(--light);
+            transform: translateY(-5px);
+        }
+
+        .quality-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
-        .stat-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
+        .form-group {
+            text-align: right;
         }
 
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-gold);
-            font-family: 'Playfair Display', serif;
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
-        /* --- TESTIMONIALS --- */
-        .testimonials {
-            padding: 6rem 0;
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
             text-align: center;
         }
 
-        .testimonial-slider {
-            max-width: 800px;
+        .footer-content {
+            max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .quote-card {
-            background: white;
-            padding: 3rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-card);
-            margin: 1rem;
-        }
-
-        .quote-text {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            color: var(--color-text);
-        }
-
-        .author {
-            font-weight: 700;
-            color: var(--color-primary);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background: #111;
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .footer-col h4 {
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
             color: white;
-            margin-bottom: 1.5rem;
-            font-family: 'DM Sans', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
+            transition: var(--transition);
         }
 
-        .footer-col ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-col a {
-            color: #888;
-            transition: 0.3s;
-        }
-
-        .footer-col a:hover {
-            color: var(--color-gold);
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
         }
 
         .copyright {
-            text-align: center;
-            border-top: 1px solid #222;
             padding-top: 2rem;
-            color: #555;
-            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
         }
 
-        /* --- RESPONSIVE --- */
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .quality-content { grid-template-columns: 1fr; }
-            .nav-links { display: none; } /* Simple mobile hide for demo */
-        }
+            .nav-links {
+                display: none;
+            }
 
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-text, .about-image {
+                transform: translateY(30px);
+            }
+
+            .about-text.visible, .about-image.visible {
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
-
-    <!-- NAVBAR -->
-    <nav id="navbar">
-        <div class="container nav-content">
-            <a href="#" class="logo">MITRA SAFFRON.</a>
-            <div class="nav-links">
-                <a href="#features">Why Saffron</a>
-                <a href="#products">Shop</a>
-                <a href="#quality">Quality</a>
-                <a href="#contact">Wholesale</a>
-            </div>
-            <a href="#products" class="btn btn-primary">Shop Now</a>
+    <!-- Navigation -->
+    <nav>
+<div class="logo">
+    <img src="logo.jpg" alt="Logo" class="logo-img">
+    <span>زعفران میترا</span>
+</div>
+        <div class="nav-links">
+            <a href="#home">خانه</a>
+            <a href="#about">درباره ما</a>
+            <a href="#products">محصولات</a>
+            <a href="#quality">کیفیت</a>
+            <a href="#contact">تماس با ما</a>
         </div>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <div class="hero-bg" id="parallax-bg"></div>
-        <div class="container hero-content reveal">
-            <h1>The Red Gold of Persia</h1>
-            <p>Experience the world's most precious spice. Hand-harvested, ISO-certified Super Negin saffron delivered directly from Iranian farms to your kitchen.</p>
-            <div class="hero-buttons">
-                <a href="#products" class="btn btn-primary">Shop Collection</a>
-                <a href="#contact" class="btn btn-outline">Wholesale Inquiry</a>
-            </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>طلای سرخ ایران</h1>
+            <p>زعفران اصل و با کیفیت از مزارع خراسان، با عطر و طعم بی‌نظیر برای آشپزی و سلامتی شما</p>
+            <a href="#products" class="btn">مشاهده محصولات</a>
         </div>
-        <!-- JS will add particles here -->
-    </header>
+    </section>
 
-    <!-- FEATURES SECTION -->
-    <section id="features" class="features">
-        <div class="container">
-            <div class="section-header reveal">
-                <span>Culinary Excellence</span>
-                <h2>Why Choose Saffron?</h2>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-title">
+            <h2>درباره زعفران میترا</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>تاریخچه و افتخارات ما</h3>
+                <p>زعفران میترا با بیش از سه دهه تجربه در کشت، فرآوری و صادرات زعفران، یکی از معتبرترین برندهای زعفران در ایران است. ما با بهره‌گیری از بهترین زمین‌های کشت زعفران در خراسان و استفاده از روش‌های مدرن فرآوری، محصولی با بالاترین کیفیت را به مشتریان خود ارائه می‌دهیم.</p>
+                <p>کیفیت، اصالت و رضایت مشتری مهم‌ترین اصول کاری ماست. تمامی مراحل تولید زعفران میترا تحت نظارت دقیق کارشناسان مجرب انجام می‌شود تا محصول نهایی عاری از هرگونه ناخالصی و با بالاترین میزان کروسین (عامل رنگ‌دهی) و سافرانال (عامل عطر) باشد.</p>
+                <a href="#contact" class="btn">تماس با ما</a>
             </div>
-            <div class="feature-grid">
-                <div class="feature-card reveal">
-                    <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
-                    <h3>Pure Potency</h3>
-                    <p>Known as "Red Gold," our saffron possesses powerful antioxidant properties and mood-enhancing benefits validated by centuries of use.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon"><i class="fa-solid fa-mortar-pestle"></i></div>
-                    <h3>Culinary Depth</h3>
-                    <p>A single pinch transforms rice, tea, and desserts with a distinct floral aroma and a rich golden hue that imitation spices cannot match.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-                    <h3>Wellness</h3>
-                    <p>Natural compounds like Crocin and Safranal support heart health, vision, and mental clarity.</p>
-                </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="زعفران میترا">
             </div>
         </div>
     </section>
 
-    <!-- WHY MITRA SECTION -->
-    <section class="pillars">
-        <div class="container">
-            <div class="pillar-content">
-                <div class="pillar-image reveal">
-                    <!-- Temp Image: Saffron Threads in bowl -->
-                    <img src="https://images.unsplash.com/photo-1597060008866-91c3a2c92135?q=80&w=1000&auto=format&fit=crop" alt="Premium Saffron Bowl">
-                </div>
-                <div class="pillar-text reveal">
-                    <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
-                        <span>The Mitra Standard</span>
-                        <h2>Direct From The Source</h2>
-                    </div>
-                    <p>We bypass middlemen to bring you Grade A "Super Negin" saffron. By partnering directly with heritage farmers in Khorasan, we ensure every thread is 100% red, potent, and pure.</p>
-                    
-                    <div class="pillar-list">
-                        <div class="pillar-item">
-                            <i class="fa-solid fa-circle-check check-icon"></i>
-                            <div>
-                                <h4>100% All-Red Threads</h4>
-                                <p class="text-muted">No yellow styles, no crumbs. Only the potent red stigmas.</p>
-                            </div>
-                        </div>
-                        <div class="pillar-item">
-                            <i class="fa-solid fa-circle-check check-icon"></i>
-                            <div>
-                                <h4>ISO 3632 Certified</h4>
-                                <p class="text-muted">Lab-tested for color (Crocin), flavor (Picrocrocin), and aroma (Safranal).</p>
-                            </div>
-                        </div>
-                        <div class="pillar-item">
-                            <i class="fa-solid fa-circle-check check-icon"></i>
-                            <div>
-                                <h4>Ethically Sourced</h4>
-                                <p class="text-muted">Fair wages for farmers and sustainable harvesting practices.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRODUCTS SECTION -->
+    <!-- Products Section -->
     <section id="products" class="products">
-        <div class="container">
-            <div class="section-header reveal">
-                <span>Our Collection</span>
-                <h2>Shop Premium Saffron</h2>
+        <div class="section-title">
+            <h2>محصولات ما</h2>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <div class="product-content">
+                    <h3>زعفران سوپرنگین سنتی خشک</h3>
+                    <p>زعفران با رشته‌های کاملاً قرمز و عطر و طعم بی‌نظیر</p>
+                    <div class="product-price">
+                        <span class="price">290,000 تومان</span>
+                        <a href="#contact" class="btn">سفارش</a>
+                    </div>
+                </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <div class="product-content">
+                    <h3>زعفران سوپرنگین اتویی خشک</h3>
+                    <p>زعفران با رشته‌های کاملاً قرمز و عطر و طعم بی‌نظیر</p>
+                    <div class="product-price">
+                        <span class="price">310,000 تومان</span>
+                        <a href="#contact" class="btn">سفارش</a>
+                    </div>
+                </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="product-content">
+                    <h3> زعفران نگین اتویی خشک</h3>
+                    <p>زعفران با رشته‌های قرمز و کیفیت عالی</p>
+                    <div class="product-price">
+                        <span class="price">280,000 تومان</span>
+                        <a href="#contact" class="btn">سفارش</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-grid">
-                <!-- Product 1 -->
-                <div class="product-card reveal">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1622485349368-3e8517644707?q=80&w=800&auto=format&fit=crop" alt="Saffron Jar">
-                    </div>
-                    <div class="product-details">
-                        <h3>Signature Jar (2g)</h3>
-                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Perfect for home chefs.</p>
-                        <span class="price">\$18.00</span>
-                        <a href="#" class="btn btn-primary" style="width: 100%">Add to Cart</a>
+<div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="product-content">
+                    <h3>زعفران نگین سنتی خشک</h3>
+                    <p>زعفران با رشته‌های قرمز و کیفیت عالی</p>
+                    <div class="product-price">
+                        <span class="price">270,000 تومان</span>
+                        <a href="#contact" class="btn">سفارش</a>
                     </div>
                 </div>
-                <!-- Product 2 -->
-                <div class="product-card reveal">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1622485349435-167f516dc701?q=80&w=800&auto=format&fit=crop" alt="Saffron Gift Box">
-                    </div>
-                    <div class="product-details">
-                        <h3>Connoisseur Tin (5g)</h3>
-                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">For the daily user.</p>
-                        <span class="price">\$40.00</span>
-                        <a href="#" class="btn btn-primary" style="width: 100%">Add to Cart</a>
-                    </div>
+            </div>            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-star"></i>
                 </div>
-                <!-- Product 3 -->
-                <div class="product-card reveal">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=800&auto=format&fit=crop" alt="Saffron Powder">
-                    </div>
-                    <div class="product-details">
-                        <h3>Restaurant Bulk (25g)</h3>
-                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">High volume premium supply.</p>
-                        <span class="price">\$180.00</span>
-                        <a href="#" class="btn btn-primary" style="width: 100%">Wholesale Order</a>
+                <div class="product-content">
+                    <h3>زعفران رستورانی</h3>
+                    <p>ترکیبی از زعفران سر گل و ریشه، مناسب برای مصارف رستورانی  و نذری</p>
+                    <div class="product-price">
+                        <span class="price">140,000 تومان</span>
+                        <a href="#contact" class="btn">سفارش</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- QUALITY / LAB SECTION -->
+    <!-- Quality Section -->
     <section id="quality" class="quality">
-        <div class="quality-bg"></div>
-        <div class="container quality-content">
-            <div class="reveal">
-                <span class="iso-badge">ISO 3632 TESTED</span>
-                <h2>Science Meets Tradition</h2>
-                <p>We don't just claim quality; we prove it. Every harvest is subjected to rigorous spectrophotometric analysis in certified laboratories to measure the three pillars of saffron quality.</p>
-                
-                <div class="stat-grid">
-                    <div class="stat-card">
-                        <div class="stat-number">260+</div>
-                        <div>Color Strength</div>
-                        <small style="color: #aaa;">Target: >220</small>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">100%</div>
-                        <div>Purity Grade</div>
-                        <small style="color: #aaa;">No additives</small>
-                    </div>
+        <div class="section-title">
+            <h2>چرا زعفران میترا؟</h2>
+        </div>
+        <div class="quality-content">
+            <div class="quality-item">
+                <div class="quality-icon">
+                    <i class="fas fa-award"></i>
                 </div>
+                <h3>کیفیت تضمینی</h3>
+                <p>سلامتی و اعتماد شما ارزشمنمد  است. به زودی گواهینامه های کیفیت محصول در همین بخش بارگذاری خواهد شد</p>
             </div>
-            <div class="reveal" style="display: flex; justify-content: center;">
-                 <!-- Abstract Lab Image representation -->
-                 <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); padding: 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);">
-                    <i class="fa-solid fa-flask" style="font-size: 4rem; color: var(--color-gold); margin-bottom: 1rem;"></i>
-                    <h3 style="color: white; margin-bottom: 0.5rem;">Certified Analysis</h3>
-                    <p style="color: #ccc; font-size: 0.9rem;">Every batch comes with a certificate of analysis ensuring you get exactly what you pay for.</p>
-                 </div>
+            <div class="quality-item">
+                <div class="quality-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3>دریافت مستقیم از کشاورز</h3>
+                <p>زعفران ما با حذف واسطه ها و به طور مستقیم از کشاورز ها به دست شما می رسد</p>
+            </div>
+            <div class="quality-item">
+                <div class="quality-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3>ارسال سریع</h3>
+                <p>ارسال به تمام نقاط ایران در کوتاه‌ترین زمان ممکن</p>
+            </div>
+            <div class="quality-item">
+                <div class="quality-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>مشاوره رایگان</h3>
+                <p>پشتیبانی و مشاوره رایگان قبل از خرید</p>
             </div>
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header reveal">
-                <span>Reviews</span>
-                <h2>What Our Clients Say</h2>
-            </div>
-            <div class="testimonial-slider reveal">
-                <div class="quote-card">
-                    <div style="color: var(--color-gold); font-size: 1.5rem; margin-bottom: 1rem;">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="quote-text">"I've sourced saffron from all over the world for my restaurant. Mitra Saffron is hands down the cleanest, most potent product I've used. The aroma hits you the moment you open the jar."</p>
-                    <div class="author">Elena R. - Head Chef, Lumiere</div>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-title">
+            <h2>تماس با ما</h2>
+        </div>
+        <div class="contact-content">
+            <p>برای سفارش محصولات و دریافت مشاوره رایگان، با ما در تماس باشید</p>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">نام و نام خانوادگی</label>
+                    <input type="text" id="name" placeholder="نام خود را وارد کنید">
                 </div>
+                <div class="form-group">
+                    <label for="email">ایمیل</label>
+                    <input type="email" id="email" placeholder="ایمیل خود را وارد کنید">
+                </div>
+                <div class="form-group">
+                    <label for="phone">شماره تماس</label>
+                    <input type="tel" id="phone" placeholder="شماره تماس خود را وارد کنید">
+                </div>
+                <div class="form-group">
+                    <label for="message">پیام</label>
+                    <textarea id="message" rows="5" placeholder="پیام خود را وارد کنید"></textarea>
+                </div>
+                <button type="submit" class="btn">ارسال پیام</button>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3 style="color: white; font-family: 'Playfair Display'; font-size: 1.5rem; margin-bottom: 1rem;">MITRA SAFFRON.</h3>
-                    <p style="color: #888; font-size: 0.9rem;">Bringing the ancient luxury of Persian saffron to the modern world with transparency and trust.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Shop</h4>
-                    <ul>
-                        <li><a href="#">Threads</a></li>
-                        <li><a href="#">Powder</a></li>
-                        <li><a href="#">Gifts</a></li>
-                        <li><a href="#">Wholesale</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">Our Story</a></li>
-                        <li><a href="#">Lab Results</a></li>
-                        <li><a href="#">Sustainability</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Connect</h4>
-                    <p style="color: #888; margin-bottom: 1rem;">hello@mitrasaffron.com</p>
-                    <div style="font-size: 1.5rem;">
-                        <a href="#" style="margin-right: 1rem;"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>زعفران میترا</h3>
+                <p>ارائه کننده بهترین زعفران ایرانی با کیفیت تضمینی و قیمت مناسب</p>
+            </div>
+            <div class="footer-section">
+                <h3>اطلاعات تماس</h3>
+                <p><i class="fas fa-phone"></i> 09057482229</p>
+                <p><i class="fas fa-envelope"></i> mitrasaffron.github.io</p>
+            </div>
+            <div class="footer-section">
+                <h3> @Mitra_Saffron: شبکه‌های اجتماعی</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+
                 </div>
             </div>
-            <div class="copyright">
-                &copy; 2025 Mitra Saffron. All rights reserved.
-            </div>
+        </div>
+        <div class="copyright">
+            <p>تمامی حقوق برای زعفران میترا محفوظ است © ۱۴۰۲</p>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
     <script>
-        // 1. Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.reveal');
-
-        const revealOnScroll = () => {
-            const windowHeight = window.innerHeight;
-            const elementVisible = 100;
-
-            revealElements.forEach((reveal) => {
-                const elementTop = reveal.getBoundingClientRect().top;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveal.classList.add('active');
-                }
-            });
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        window.addEventListener('scroll', revealOnScroll);
-        // Trigger once on load
-        revealOnScroll();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-        // 2. Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.about-text, .about-image, .product-card, .quality-item');
+            
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (window.innerWidth <= 768) {
+                            navLinks.style.display = 'none';
+                        }
+                    }
+                });
+            });
+
+            // Navbar background on scroll
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 100) {
+                    nav.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                    nav.style.padding = '0.7rem 2rem';
+                } else {
+                    nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                    nav.style.padding = '1rem 2rem';
+                }
+            });
         });
-
-        // 3. Parallax Effect for Hero Background
-        const heroBg = document.getElementById('parallax-bg');
-        window.addEventListener('scroll', () => {
-            let scrollPosition = window.pageYOffset;
-            // Move background at slower speed
-            heroBg.style.transform = 'translateY(' + (scrollPosition * 0.5) + 'px)';
-        });
-
-        // 4. Generate Particles
-        const heroSection = document.querySelector('.hero');
-        for(let i=0; i<15; i++) {
-            let particle = document.createElement('div');
-            particle.classList.add('particle');
-            // Randomize position and delay
-            particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.animationDelay = Math.random() * 5 + 's';
-            particle.style.width = (Math.random() * 4 + 2) + 'px';
-            particle.style.height = particle.style.width;
-            heroSection.appendChild(particle);
-        }
-
     </script>
 </body>
-    </html>
+</html>
