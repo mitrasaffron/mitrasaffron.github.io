@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زعفران سوپر نگین خراسان شمالی</title>
+    <title>زعفران سوپر نگین خراسان شمالی | کیفیت بدون دغدغه</title>
     <style>
+        /* استفاده از فونت استاندارد Vazirmatn */
         @font-face {
             font-family: 'Vazirmatn';
             src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
@@ -25,20 +26,36 @@
             margin: 0 auto;
             background-color: #fff;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             padding: 25px;
         }
         h1 {
-            color: #8b0000; /* یک رنگ زعفرانی تیره برای تاکید */
+            color: #9A031E; /* رنگ زعفرانی پررنگ */
             font-size: 1.6em;
             margin-bottom: 5px;
-            border-bottom: 2px solid #ffcc66;
+            border-bottom: 2px solid #FFC72C; /* خط طلایی */
             padding-bottom: 10px;
         }
-        .intro {
-            color: #666;
-            font-size: 0.95em;
-            margin-bottom: 25px;
+        /* پاراگراف توجیهی */
+        .justification {
+            background-color: #FFFBEB; /* زمینه روشن برای تاکید */
+            border-right: 4px solid #FFC72C;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #6a6a6a;
+            text-align: right;
+            line-height: 1.8;
+        }
+        .justification strong {
+            color: #9A031E;
+        }
+        /* معرفی محصول */
+        .product-name {
+            color: #333;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
         .price-list {
             list-style: none;
@@ -58,18 +75,38 @@
         }
         .amount {
             font-weight: bold;
-            color: #8b0000;
+            color: #9A031E;
         }
         .price {
             font-weight: bold;
             color: #444;
-            direction: ltr; /* برای نمایش بهتر اعداد و "تومان" */
+            direction: ltr;
             text-align: left;
         }
         .base-price {
             font-size: 0.9em;
             color: #999;
             margin-top: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0f0f0; /* جداکننده از اطلاعات تماس */
+        }
+        /* اطلاعات تماس جدید */
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            font-size: 0.95em;
+            text-align: center;
+        }
+        .contact-info p {
+            margin: 8px 0;
+        }
+        .contact-info a {
+            color: #9A031E; /* لینک به رنگ زعفرانی */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -77,9 +114,14 @@
 
     <div class="container">
         <h1>زعفران سوپر نگین</h1>
-        <div class="intro">
+        
+        <div class="justification">
             ما به وقت و آرامش شما احترام می‌گذاریم. <br>
             **این کد برای اینجاست که شما با آسودگی خاطر و در زمان مناسب،** اطلاعات محصول ما را ببینید و حق انتخاب با شما باشد.
+        </div>
+
+        <div class="product-name">
+            محصول ما: **سوپر نگین سنتی خراسان شمالی**
         </div>
 
         <ul class="price-list">
@@ -100,7 +142,18 @@
         <p class="base-price">
             قیمت پایه: 270,000 تومان برای 1 گرم خالص
         </p>
-    </div>
+
+        <div class="contact-info">
+            <p>
+                پیج اینستاگرام: <br>
+                <a href="https://instagram.com/YourPageID" target="_blank">@YourPageID</a>
+            </p>
+            <p>
+                تماس و سفارش (WhatsApp): <br>
+                <a href="tel:+989123456789">0912 345 6789</a>
+            </p>
+        </div>
+        </div>
 
 </body>
 </html>
