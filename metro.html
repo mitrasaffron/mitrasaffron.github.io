@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زعفران سوپر نگین خراسان شمالی</title>
+    <style>
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        body {
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #fcfcfc;
+            color: #333;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+        }
+        h1 {
+            color: #8b0000; /* یک رنگ زعفرانی تیره برای تاکید */
+            font-size: 1.6em;
+            margin-bottom: 5px;
+            border-bottom: 2px solid #ffcc66;
+            padding-bottom: 10px;
+        }
+        .intro {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 25px;
+        }
+        .price-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 1.1em;
+        }
+        .price-item:last-child {
+            border-bottom: none;
+        }
+        .amount {
+            font-weight: bold;
+            color: #8b0000;
+        }
+        .price {
+            font-weight: bold;
+            color: #444;
+            direction: ltr; /* برای نمایش بهتر اعداد و "تومان" */
+            text-align: left;
+        }
+        .base-price {
+            font-size: 0.9em;
+            color: #999;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>زعفران سوپر نگین</h1>
+        <div class="intro">
+            از شما بابت احترام به حریم شخصی دیگران و اسکن کد سپاسگزاریم. <br>
+            محصول: **سوپر نگین سنتی خراسان شمالی**
+        </div>
+
+        <ul class="price-list">
+            <li class="price-item">
+                <span class="amount">نیم گرمی</span>
+                <span class="price">135,000 تومان</span>
+            </li>
+            <li class="price-item">
+                <span class="amount">1 گرمی</span>
+                <span class="price">270,000 تومان</span>
+            </li>
+            <li class="price-item">
+                <span class="amount">2 گرمی</span>
+                <span class="price">540,000 تومان</span>
+            </li>
+        </ul>
+
+        <p class="base-price">
+            قیمت پایه: 270,000 تومان برای 1 گرم خالص
+        </p>
+    </div>
+
+</body>
+</html>
