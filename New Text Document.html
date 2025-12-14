@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>زعفران سوپر نگین اتویی</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      @font-face {
+        font-family: "lalezar";
+        src: url("fonts/Digi Lalezar Plus.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap; /* Improves loading performance */
+      }
+
+      @font-face {
+        font-family: "rastin";
+        src: url("fonts/Digi Rastin Plus Rectangle.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap; /* Improves loading performance */
+      }
+
+      body {
+        background: #fdf6ee;
+        color: #3a2618;
+        font-family: "rastin", "Vazirmatn", Tahoma, sans-serif;
+        padding-bottom: 80px; /* Reduced space for shorter footer */
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 24px 20px;
+      }
+
+      /* Animation */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+      }
+
+      .animate:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .animate:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .animate:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .animate:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .animate:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .animate:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      .animate:nth-child(7) {
+        animation-delay: 0.7s;
+      }
+
+      /* Product Image */
+      .product-image {
+        width: 100%;
+        height: 260px;
+        background: #f8f0e5;
+        border-radius: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 24px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+      }
+
+      .product-image img {
+        max-width: 85%;
+        max-height: 85%;
+        object-fit: contain;
+      }
+
+      /* Title */
+      .product-title {
+        font-family: "lalezar", "Vazirmatn", Tahoma, sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #8b0000;
+        line-height: 1.4;
+      }
+
+      /* Info Items */
+      .info-item {
+        display: flex;
+        margin: 12px 0;
+      }
+
+      .info-label {
+        font-weight: 600;
+        min-width: 110px;
+        color: #5a4a42;
+      }
+
+      .info-value {
+        flex: 1;
+        color: #2c1e15;
+      }
+
+      .price {
+        color: #d4af37;
+        font-weight: 700;
+        font-size: 19px;
+      }
+
+      /* 🔻 Updated Footer — Shorter & Tighter */
+      .social-footer {
+        font-family: "rastin", Tahoma, sans-serif;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 10px 8px; /* Reduced padding */
+        box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 480px;
+        margin: 0 auto;
+        z-index: 1000;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        height: 85px; /* Compact height */
+      }
+
+      .social-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 600;
+        color: #333;
+        width: 33%;
+        padding: 6px 0; /* Reduced padding */
+        border-radius: 10px;
+        transition: transform 0.15s ease;
+      }
+
+      .social-btn:hover,
+      .social-btn:active {
+        transform: translateY(-2px);
+      }
+
+      /* Icon Containers — Smaller but better-proportioned */
+      .icon-container {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5px;
+      }
+
+      /* Instagram: Official gradient, cleaner */
+      .instagram-icon {
+        background: radial-gradient(
+          circle at 30% 107%,
+          #fdf497 0%,
+          #fdf497 5%,
+          #fd5949 45%,
+          #d6249f 60%,
+          #285aeb 90%
+        );
+        color: white !important;
+      }
+
+      /* Telegram: Official blue with WHITE icon */
+      .telegram-icon {
+        background: #0088cc; /* or #26A5E4 */
+        color: white;
+      }
+
+      /* Website: Neutral placeholder for your logo */
+      .website-icon {
+        background: #f2f2f2;
+        border: 1px solid #e0e0e0;
+        color: #888;
+      }
+
+      /* Icons: Slightly larger for better visual weight */
+      .social-btn i {
+        font-size: 20px; /* Was 22–24, now balanced */
+      }
+
+      .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 14px;
+        image-rendering: -webkit-optimize-contrast; /* improves clarity on iOS */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Product Image -->
+      <div class="product-image animate">
+        <!-- 🔸 Replace with your real image -->
+        <img src="photo_2025-11-29_14-34-09.jpg" alt="زعفران سوپر نگین اتویی" />
+      </div>
+
+      <!-- Title -->
+      <h1 class="product-title animate">زعفران سوپر نگین اتویی</h1>
+
+      <!-- Details -->
+      <div class="info-item animate">
+        <div class="info-label">قیمت:</div>
+        <div class="info-value price">۲۷۰ هزار تومان</div>
+      </div>
+      <div class="info-item animate">
+        <div class="info-label">وزن خالص:</div>
+        <div class="info-value">۱ گرم</div>
+      </div>
+      <div class="info-item animate">
+        <div class="info-label">بسته‌بندی:</div>
+        <div class="info-value">شیشه‌ای با درپوش چوبی</div>
+      </div>
+      <div class="info-item animate">
+        <div class="info-label">تولیدکننده:</div>
+        <div class="info-value">خانواده حسینی</div>
+      </div>
+      <div class="info-item animate">
+        <div class="info-label">محل تولید:</div>
+        <div class="info-value">باغان، خراسان شمالی</div>
+      </div>
+      <div class="info-item animate">
+        <div class="info-label">تاریخ برداشت:</div>
+        <div class="info-value">آذر ۱۴۰۴</div>
+      </div>
+    </div>
+
+    <!-- Compact, Prominent Footer -->
+    <div class="social-footer">
+      <a
+        href="https://instagram.com/mitra_saffron"
+        target="_blank"
+        class="social-btn animate"
+      >
+        <div class="icon-container instagram-icon">
+          <i class="fab fa-instagram"></i>
+        </div>
+        صفحه اینستاگرام
+      </a>
+
+      <a
+        href="https://t.me/mitra_saffron"
+        target="_blank"
+        class="social-btn animate"
+      >
+        <div class="icon-container telegram-icon">
+          <i class="fab fa-telegram-plane"></i>
+        </div>
+        کانال تلگرام
+      </a>
+
+      <a
+        href="https://mitrasaffron.github.io"
+        target="_blank"
+        class="social-btn animate"
+      >
+        <div class="icon-container website-icon">
+          <!-- 🔸 Replace the <i> below with your logo image -->
+          <!-- Example: <img src="logo.png" style="width:26px; height:26px; object-fit:contain;"> -->
+          <i class="fas fa-globe"></i>
+        </div>
+        صفحه اصلی
+      </a>
+    </div>
+  </body>
+</html>
