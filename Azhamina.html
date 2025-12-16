@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>از همینا — شیر زعفران طبیعی</title>
     <style></style>
-    <!-- Optional: Load Vazirmatn font from CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css  "
+    />
   </head>
   <body>
     <div class="container"></div>
@@ -104,7 +107,7 @@
       .container {
         max-width: 480px;
         margin: 0 auto;
-        padding: 24px 20px;
+        padding: 6px 20px;
       }
 
       /* Animation */
@@ -122,7 +125,7 @@
       /* Product Image */
       .product-image {
         width: 100%;
-        height: 380px;
+        height: 500px;
         background: #f8f0e5;
         border-radius: 14px;
         display: flex;
@@ -244,9 +247,10 @@
 
       /* Website: Neutral placeholder for your logo */
       .website-icon {
-        background: #fcca88;
-        border: 1px solid #e0e0e0;
-        color: #888;
+        /* Remove background and border — let the image fill it */
+        background: transparent;
+        border: none;
+        padding: 0;
       }
 
       /* Icons: Slightly larger for better visual weight */
@@ -261,6 +265,100 @@
         border-radius: 14px;
         image-rendering: -webkit-optimize-contrast; /* improves clarity on iOS */
       }
+
+      /* ============== PRO ANIMATIONS ============== */
+
+      /* General fade-in-up for content */
+      .container > *:not(.social-footer):not(.product-image) {
+        opacity: 0;
+        transform: translateY(16px);
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      /* Staggered delay for smoother flow */
+      .container > .description {
+        animation-delay: 0.2s;
+      }
+      .container > .price {
+        animation-delay: 0.35s;
+      }
+      .container > .thank-you {
+        animation-delay: 0.5s;
+      }
+      .container > .instagram {
+        animation-delay: 0.65s;
+      }
+
+      /* Product image: soft scale-in with slight bounce */
+      .product-image.animate {
+        opacity: 0;
+        transform: scale(0.95);
+        animation: popIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+
+      /* Social footer buttons: elegant lift & tint on tap/hover */
+      .social-btn {
+        opacity: 0;
+        animation: slideUpFade 0.6s ease-out forwards;
+      }
+      .social-btn:nth-child(1) {
+        animation-delay: 0.9s;
+      }
+      .social-btn:nth-child(2) {
+        animation-delay: 1.05s;
+      }
+      .social-btn:nth-child(3) {
+        animation-delay: 1.2s;
+      }
+
+      /* Hover & active states (enhanced) */
+      .social-btn:active {
+        transform: translateY(0) scale(0.96);
+        transition: transform 0.1s ease;
+      }
+
+      /* Keyframes */
+      @keyframes popIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.92) translateY(12px);
+        }
+        70% {
+          transform: scale(1.02);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      @keyframes slideUpFade {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Ensure smooth rendering */
+      .animate,
+      .container > * {
+        will-change: transform, opacity;
+      }
+
+      /* Optional: disable animations for users who prefer reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-delay: 0s !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -268,7 +366,10 @@
       <!-- Product Image -->
       <div class="product-image animate">
         <!-- 🔸 Replace with your real image -->
-        <img src="photo_2025-11-29_14-34-09.jpg" alt="زعفران سوپر نگین اتویی" />
+        <img
+          src="gemini-2.5-flash-image_use_this_cup_and_the_qr_code_qr_code_must_be_exat_as_possible_to_create_a_single-0.jpg"
+          alt="زعفران سوپر نگین اتویی"
+        />
       </div>
       <h1>از همینا</h1>
 
@@ -319,12 +420,15 @@
         class="social-btn animate"
       >
         <div class="icon-container website-icon">
-          <!-- 🔸 Replace the <i> below with your logo image -->
-          <!-- Example: <img src="logo.png" style="width:26px; height:26px; object-fit:contain;"> -->
           <img
             src="logo.jpg"
             alt="لوگو زعفران میترا"
-            style="width: 40px; height: 40px; object-fit: contain"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 50%;
+            "
           />
         </div>
         صفحه اصلی
