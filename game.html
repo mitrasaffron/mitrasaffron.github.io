@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گیمیفیکیشن خرید زعفران</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazirmatn@33.003/font.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            min-height: 100vh;
+            transition: background 0.5s ease;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #ff6b6b;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 107, 107, 0.5);
+            }
+            to {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 215, 0, 0.8);
+            }
+        }
+
+        .xp-display {
+            font-size: 1.5em;
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .xp-display.updated {
+            animation: xpBounce 0.5s ease;
+        }
+
+        @keyframes xpBounce {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #ffd700;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        .dot.completed {
+            background: #4caf50;
+        }
+
+        .scenario {
+            display: none;
+            animation: fadeOut 0.3s ease;
+        }
+
+        .scenario.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        .scenario-title {
+            font-size: 2em;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .scenario-description {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .choices-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .choices-container.image-choices {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .choice-btn {
+            padding: 20px;
+            background: white;
+            border: 3px solid #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+            font-family: 'Vazirmatn', sans-serif;
+            text-align: right;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .choice-btn:hover {
+            border-color: #ffd700;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+        }
+
+        .choice-btn.selected {
+            border-color: #ff6b6b;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffd700 100%);
+            color: white;
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.5);
+            animation: pulse 0.5s ease;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1.03);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        .choice-btn .xp-badge {
+            display: none;
+        }
+
+        /* Image-based choice styles for scenario 2 */
+        .image-choice {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 4px solid #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-choice:hover {
+            border-color: #ffd700;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .image-choice.selected {
+            border-color: #ff6b6b;
+            border-width: 5px;
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.6);
+            animation: imagePulse 0.5s ease;
+        }
+
+        @keyframes imagePulse {
+            0%, 100% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .image-choice img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .image-choice-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999 0%;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+
+        .image-choice:has(img) .image-choice-placeholder::before {
+            display: none;
+        }
+
+        .image-choice:has(img) .image-choice-placeholder {
+            background: transparent;
+        }
+
+        .image-choice-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9em;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .image-choice.selected .image-choice-label {
+            background: rgba(255, 107, 107, 0.9);
+        }
+
+        @media (max-width: 768px) {
+            .choices-container.image-choices {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .image-choice {
+                width: 100%;
+                max-width: 300px;
+                height: 250px;
+            }
+        }
+
+        .next-btn {
+            display: none;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffd700 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .next-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .next-btn.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+        }
+
+        .next-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .xp-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+            color: white;
+            padding: 40px 60px;
+            border-radius: 25px;
+            font-size: 2.5em;
+            font-weight: bold;
+            z-index: 2000;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            display: none;
+            text-align: center;
+            border: 4px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .xp-popup.show {
+            display: block;
+            animation: popupAnimation 0.6s ease;
+        }
+
+        .xp-popup i {
+            display: block;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            animation: spin 1s ease-in-out;
+        }
+
+        @keyframes popupAnimation {
+            0% {
+                transform: translate(-50%, -50%) scale(0.3) rotate(-180deg);
+                opacity: 0;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.15) rotate(10deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg) scale(0.5);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.2);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        .results-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .results-screen.active {
+            display: block;
+        }
+
+        .results-title {
+            font-size: 2.5em;
+            color: #ff6b6b;
+            margin-bottom: 30px;
+        }
+
+        .final-xp {
+            font-size: 3em;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .percentage {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .restart-btn {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffd700 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .restart-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .restart-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .restart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+        }
+
+        .restart-btn:active {
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .scenario-title {
+                font-size: 1.5em;
+            }
+
+            .choice-btn {
+                padding: 15px;
+                font-size: 1em;
+            }
+        }
+
+        /* Background images for each scenario
+           Place your background images in the same directory as this HTML file:
+           - scenario1-bg.jpg (for scenario 1)
+           - scenario2-bg.jpg (for scenario 2)
+           - scenario3-bg.jpg (for scenario 3)
+           - results-bg.jpg (for results screen)
+           If images are not found, the gradient overlay will still show
+        */
+        body.scenario-1 {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.00) 0%, rgba(255, 107, 107, 0.0) 100%),
+                        url('./image.png') center/cover no-repeat fixed;
+
+        }
+
+        body.scenario-2 {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.0) 0%, rgba(255, 215, 0, 0.0) 100%),
+                        url('./image.png') center/cover no-repeat fixed;
+        }
+
+        body.scenario-3 {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.0) 0%, rgba(255, 107, 107, 0.0) 100%),
+                        url('./image.png') center/cover no-repeat fixed;
+        }
+
+        body.results {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.0) 0%, rgba(255, 215, 0, 0.0) 100%),
+                        url('./image.png') center/cover no-repeat fixed;
+        }
+    </style>
+</head>
+<body class="scenario-1">
+    <div class="container">
+        <div class="header">
+            <h1>🌺  خرید زعفران 🌺</h1>
+            <div class="xp-display">
+                <i class="fas fa-star"></i> امتیاز: <span id="totalXP">0</span> / 300
+            </div>
+        </div>
+
+        <div class="progress-dots">
+            <div class="dot active" id="dot-1"></div>
+            <div class="dot" id="dot-2"></div>
+            <div class="dot" id="dot-3"></div>
+        </div>
+
+        <!-- Scenario 1 -->
+        <div class="scenario active" id="scenario-1">
+            <h2 class="scenario-title">سناریو ۱: زنجیره ارزش زعفران</h2>
+            <div class="scenario-description">
+                🌱 کشاورز در قائن → 🏢 دلال محلی → شما<br><br>
+                💰 گردش مالی یک مثقال:<br>
+                کشاورز می‌فروشد به دلال: ۸۵۰,۰۰۰ تومان<br>
+                (هزینه تولید: ۷۰۰,۰۰۰ تومان، سود: ۱۵۰,۰۰۰ تومان)<br><br>
+                دلال می‌فروشد به شما: ۱,۴۰۰,۰۰۰ تومان<br>
+                سود دلال: ۵۵۰,۰۰۰ تومان (۶۵٪ سود!)
+            </div>
+            <div class="choices-container" id="choices-1">
+                <button class="choice-btn" data-xp="50" data-choice="1">
+                    خرید از دلال: ۱,۴۰۰,۰۰۰ تومان
+                </button>
+                <button class="choice-btn" data-xp="100" data-choice="2">
+                    خرید مستقیم از ما: ۱,۱۵۰,۰۰۰ تومان
+                </button>
+            </div>
+            <button class="next-btn" id="next-1">ادامه →</button>
+        </div>
+
+        <!-- Scenario 2 -->
+        <div class="scenario" id="scenario-2">
+            <h2 class="scenario-title">سناریو ۲: انتخاب بسته‌بندی</h2>
+            <div class="scenario-description">
+                 
+            </div>
+            <div class="choices-container image-choices" id="choices-2">
+                <div class="image-choice"   data-xp="60" data-choice="1">
+                    <div class="image-choice-placeholder" style="background-image: url('./image copy.png');">
+                        <div class="image-choice-label">خرید از عطاری<br>۱,۴۰۰,۰۰۰ تومان</div>
+                    </div>
+                </div>
+                <div class="image-choice" data-xp="80" data-choice="2">
+                    <div class="image-choice-placeholder" style="background-image: url('./image copy 3.png');">
+                        <div class="image-choice-label">پکیج ساده ما<br>۱,۲۰۰,۰۰۰ تومان</div>
+                    </div>
+                </div>
+                <div class="image-choice" data-xp="100" data-choice="3">
+                    <div class="image-choice-placeholder" style="background-image: url('./image copy 3.png');">
+                        <div class="image-choice-label">پکیج ویژه ما<br>۱,۳۰۰,۰۰۰ تومان</div>
+                    </div>
+                </div>
+            </div>
+            <button class="next-btn" id="next-2">ادامه →</button>
+        </div>
+
+        <!-- Scenario 3 -->
+        <div class="scenario" id="scenario-3">
+            <h2 class="scenario-title">سناریو ۳: تست ارزش واقعی</h2>
+            <div class="scenario-description">
+                سه ابزار برای مقایسه در اختیار دارید:
+            </div>
+            <div class="choices-container" id="choices-3">
+                <button class="choice-btn" data-xp="50" data-choice="1">
+                    رنگ و اندازه هر زعفرون
+                </button>
+                <button class="choice-btn" data-xp="70" data-choice="2">
+                    طعم و عطر(تست تلخی و طعم یه تار زعفرون)
+                </button>
+                <button class="choice-btn" data-xp="100" data-choice="2">
+                    در اب بیاندیزید و زمان رنگ دهی زعفران رو اندازه بگیرید
+
+                </button>
+            </div>
+            <button class="next-btn" id="next-3">مشاهده نتایج →</button>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="results-screen" id="results">
+            <h2 class="results-title">🎉 تبریک! شما بازی را به پایان رساندید 🎉</h2>
+            <div class="final-xp">
+                <i class="fas fa-trophy"></i> امتیاز نهایی: <span id="finalXP">0</span> / 300
+            </div>
+            <div class="percentage">
+                درصد موفقیت: <span id="percentage">0</span>%
+            </div>
+            <button class="restart-btn" id="restartBtn">
+                <i class="fas fa-redo"></i> شروع مجدد
+            </button>
+        </div>
+
+        <!-- XP Popup -->
+        <div class="xp-popup" id="xpPopup">
+            <i class="fas fa-star"></i> +<span id="xpGained">0</span> XP
+        </div>
+    </div>
+
+    <script>
+        // Game state
+        const gameState = {
+            currentScenario: 1,
+            totalXP: 0,
+            scenarioChoices: {
+                1: null,
+                2: null,
+                3: null
+            },
+            scenarioXP: {
+                1: 0,
+                2: 0,
+                3: 0
+            }
+        };
+
+        // Scenario data
+        const scenarios = {
+            1: {
+                choices: [
+                    { text: 'خرید از دلال: ۱,۴۰۰,۰۰۰ تومان', xp: 50 },
+                    { text: 'خرید مستقیم از ما: ۱,۲۵۰,۰۰۰ تومان', xp: 100 }
+                ]
+            },
+            2: {
+                choices: [
+                    { text: 'خرید از عطاری: ۱,۴۰۰,۰۰۰ تومان', xp: 60 },
+                    { text: 'پکیج ساده ما: ۱,۲۰۰,۰۰۰ تومان', xp: 80 },
+                    { text: 'پکیج ویژه ما: ۱,۳۰۰,۰۰۰ تومان', xp: 100 }
+                ]
+            },
+            3: {
+                choices: [
+                    { text: 'نمونه A (بازار): ۱,۲۰۰,۰۰۰ تومان', xp: 70 },
+                    { text: 'نمونه B (ما): ۱,۲۵۰,۰۰۰ تومان', xp: 100 }
+                ]
+            }
+        };
+
+        // Initialize game
+        function initGame() {
+            updateXPDisplay();
+            updateProgressDots();
+            updateBackground();
+            attachEventListeners();
+        }
+
+        // Attach event listeners using event delegation
+        function attachEventListeners() {
+            // Use event delegation for choice buttons and image choices
+            document.addEventListener('click', function(e) {
+                // Check if clicked element is a choice button
+                if (e.target.closest('.choice-btn')) {
+                    const btn = e.target.closest('.choice-btn');
+                    handleChoiceClick(btn);
+                }
+                // Check if clicked element is an image choice
+                else if (e.target.closest('.image-choice')) {
+                    const imgChoice = e.target.closest('.image-choice');
+                    handleChoiceClick(imgChoice);
+                }
+            });
+
+            // Next button listeners
+            document.getElementById('next-1').addEventListener('click', () => moveToNextScenario(1));
+            document.getElementById('next-2').addEventListener('click', () => moveToNextScenario(2));
+            document.getElementById('next-3').addEventListener('click', () => showResults());
+
+            // Restart button
+            document.getElementById('restartBtn').addEventListener('click', restartGame);
+        }
+
+        // Handle choice button or image choice click
+        function handleChoiceClick(choiceElement) {
+            const scenario = gameState.currentScenario;
+            const choicesContainer = choiceElement.closest('.choices-container');
+            
+            // Only process if this element belongs to current active scenario
+            const currentScenarioEl = document.querySelector('.scenario.active');
+            if (!currentScenarioEl.contains(choiceElement)) {
+                return;
+            }
+
+            // Remove selected class from all choices in this scenario
+            const allButtons = choicesContainer.querySelectorAll('.choice-btn');
+            const allImageChoices = choicesContainer.querySelectorAll('.image-choice');
+            allButtons.forEach(b => b.classList.remove('selected'));
+            allImageChoices.forEach(img => img.classList.remove('selected'));
+
+            // Add selected class to clicked element
+            choiceElement.classList.add('selected');
+
+            // Get XP value
+            const xp = parseInt(choiceElement.getAttribute('data-xp'));
+            const choice = parseInt(choiceElement.getAttribute('data-choice'));
+
+            // Store choice
+            gameState.scenarioChoices[scenario] = choice;
+
+            // Show next button
+            const nextBtn = currentScenarioEl.querySelector('.next-btn');
+            if (nextBtn) {
+                nextBtn.classList.add('show');
+            }
+        }
+
+        // Move to next scenario
+        function moveToNextScenario(currentScenario) {
+            // Add XP for current scenario if not already added
+            if (gameState.scenarioChoices[currentScenario] && gameState.scenarioXP[currentScenario] === 0) {
+                const scenarioEl = document.getElementById(`scenario-${currentScenario}`);
+                // Check for both button and image choices
+                const selectedBtn = scenarioEl.querySelector('.choice-btn.selected') || 
+                                   scenarioEl.querySelector('.image-choice.selected');
+                if (selectedBtn) {
+                    const xp = parseInt(selectedBtn.getAttribute('data-xp'));
+                    addXP(xp, currentScenario);
+                    
+                    // Wait for XP popup to show, then move to next scenario
+                    setTimeout(() => {
+                        hideCurrentAndShowNext(currentScenario);
+                    }, 2500); // Wait 2.5 seconds (2s for popup + 0.5s transition)
+                } else {
+                    hideCurrentAndShowNext(currentScenario);
+                }
+            } else {
+                hideCurrentAndShowNext(currentScenario);
+            }
+        }
+
+        // Hide current scenario and show next
+        function hideCurrentAndShowNext(currentScenario) {
+            // Hide current scenario
+            document.getElementById(`scenario-${currentScenario}`).classList.remove('active');
+
+            // Show next scenario
+            const nextScenario = currentScenario + 1;
+            if (nextScenario <= 3) {
+                document.getElementById(`scenario-${nextScenario}`).classList.add('active');
+                gameState.currentScenario = nextScenario;
+                updateProgressDots();
+                updateBackground();
+                
+                // Reset next button visibility
+                const nextBtn = document.getElementById(`scenario-${nextScenario}`).querySelector('.next-btn');
+                if (nextBtn) {
+                    nextBtn.classList.remove('show');
+                }
+            }
+        }
+
+        // Add XP and show popup
+        function addXP(xp, scenario) {
+            gameState.totalXP += xp;
+            gameState.scenarioXP[scenario] = xp;
+            updateXPDisplay();
+            showXPPopup(xp);
+        }
+
+        // Show XP popup
+        function showXPPopup(xp) {
+            const popup = document.getElementById('xpPopup');
+            document.getElementById('xpGained').textContent = xp;
+            popup.classList.add('show');
+            
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 2000);
+        }
+
+        // Update XP display
+        function updateXPDisplay() {
+            const xpDisplay = document.getElementById('totalXP');
+            xpDisplay.textContent = gameState.totalXP;
+            
+            // Add bounce animation
+            const xpContainer = xpDisplay.closest('.xp-display');
+            xpContainer.classList.add('updated');
+            setTimeout(() => {
+                xpContainer.classList.remove('updated');
+            }, 500);
+        }
+
+        // Update progress dots
+        function updateProgressDots() {
+            for (let i = 1; i <= 3; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                dot.classList.remove('active', 'completed');
+                
+                if (i < gameState.currentScenario) {
+                    dot.classList.add('completed');
+                } else if (i === gameState.currentScenario) {
+                    dot.classList.add('active');
+                }
+            }
+        }
+
+        // Update background
+        function updateBackground() {
+            document.body.className = `scenario-${gameState.currentScenario}`;
+        }
+
+        // Show results
+        function showResults() {
+            // Add XP for scenario 3 if not already added
+            if (gameState.scenarioChoices[3] && gameState.scenarioXP[3] === 0) {
+                const scenarioEl = document.getElementById('scenario-3');
+                // Check for both button and image choices
+                const selectedBtn = scenarioEl.querySelector('.choice-btn.selected') || 
+                                   scenarioEl.querySelector('.image-choice.selected');
+                if (selectedBtn) {
+                    const xp = parseInt(selectedBtn.getAttribute('data-xp'));
+                    addXP(xp, 3);
+                    
+                    // Wait for XP popup, then show results
+                    setTimeout(() => {
+                        displayResults();
+                    }, 2500);
+                } else {
+                    displayResults();
+                }
+            } else {
+                displayResults();
+            }
+        }
+
+        // Display results screen
+        function displayResults() {
+            // Hide all scenarios
+            document.querySelectorAll('.scenario').forEach(s => s.classList.remove('active'));
+            
+            // Show results
+            document.getElementById('results').classList.add('active');
+            document.body.className = 'results';
+            
+            // Update final stats
+            const percentage = Math.round((gameState.totalXP / 300) * 100);
+            document.getElementById('finalXP').textContent = gameState.totalXP;
+            document.getElementById('percentage').textContent = percentage;
+        }
+
+        // Restart game
+        function restartGame() {
+            // Reset game state
+            gameState.currentScenario = 1;
+            gameState.totalXP = 0;
+            gameState.scenarioChoices = { 1: null, 2: null, 3: null };
+            gameState.scenarioXP = { 1: 0, 2: 0, 3: 0 };
+
+            // Hide results
+            document.getElementById('results').classList.remove('active');
+
+            // Hide all scenarios
+            document.querySelectorAll('.scenario').forEach(s => {
+                s.classList.remove('active');
+                // Reset choice buttons
+                s.querySelectorAll('.choice-btn').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+                // Reset image choices
+                s.querySelectorAll('.image-choice').forEach(img => {
+                    img.classList.remove('selected');
+                });
+                // Hide next buttons
+                const nextBtn = s.querySelector('.next-btn');
+                if (nextBtn) {
+                    nextBtn.classList.remove('show');
+                }
+            });
+
+            // Show scenario 1
+            document.getElementById('scenario-1').classList.add('active');
+            
+            // Update displays
+            updateXPDisplay();
+            updateProgressDots();
+            updateBackground();
+        }
+
+        // Initialize on page load
+        initGame();
+    </script>
+</body>
+</html>
